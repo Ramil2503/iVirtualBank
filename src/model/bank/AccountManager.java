@@ -17,13 +17,8 @@ public class AccountManager {
     }
     
     public void test1() {
-        accountList = new ArrayList<>();
         Account test1 = new Account(0, "aaa", 0);
         accountList.add(test1);
-
-        for (Account account : accountList) {
-            System.out.println(account);
-        }
     }
 
     public List<Account> getAccountList() {

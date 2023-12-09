@@ -10,21 +10,25 @@ import model.user.Gender;
 public class ConsoleUI implements View {
     private Scanner scanner = new Scanner(System.in);
     private Presenter presenter;
-    private Menu menu;
-    private boolean work;
+    private AuthenticationMenu authenticationMenu;
+    private AccountMenu accountMenu;
+    private boolean authenticationWork;
+    private boolean accountMenuWork;
 
     public ConsoleUI() {
         presenter = new Presenter(this);
-        menu = new Menu(this);
-        work = true;
+        authenticationMenu = new AuthenticationMenu(this);
+        authenticationWork = true;
+        accountMenu = new AccountMenu(this);
+        accountMenuWork = false;
     }
 
     @Override
     public void start() {
-        while (work) {
-            print(menu.print());
+        while (authenticationWork) {
+            print(authenticationMenu.print());
             String choice = scanner.nextLine();
-            menu.execute(choice);
+            authenticationMenu.execute(choice);
         }
     }
 
@@ -102,10 +106,29 @@ public class ConsoleUI implements View {
             password = scanner.nextLine();
         }
         System.out.println("Log in successful");
+        accountMenuWork = true;
+        accountMenuStart();
+    }
+
+    public void accountMenuStart() {
+        while (accountMenuWork) {
+            print(accountMenu.print());
+            String choice = scanner.nextLine();
+            accountMenu.execute(choice);
+        }
+    }
+
+    public void checkBalance() {
+        
+    }
+
+    public void logOut() {
+        accountMenuWork = false;
+        print("Log out...");
     }
 
     public void exit() {
-        work = false;
+        authenticationWork = false;
         print("Exiting the program...");
     }
 }

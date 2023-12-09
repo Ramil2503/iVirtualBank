@@ -8,10 +8,10 @@ import view.commands.SignIn;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class AuthenticationMenu {
     private List<Command> list;
 
-    public Menu(ConsoleUI console) {
+    public AuthenticationMenu(ConsoleUI console) {
         list = new ArrayList<>();
         list.add(new CreateAccount(console));
         list.add(new SignIn(console));
@@ -29,7 +29,7 @@ public class Menu {
         return stringBuilder.toString();
     }
 
-    public void execute(String choice){
+    public void execute(String choice) {
         list.get(Integer.parseInt(choice) - 1).execute();
     }
 }

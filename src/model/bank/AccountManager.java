@@ -58,6 +58,31 @@ public class AccountManager {
         return -1.0;
     }
 
+    public int tranferFunds(long accountNumber, double amount, long accountNumberTransfer) {
+        boolean transfered = false;
+        for (Account account: accountList) {
+            if (account.getAccountNumber() == accountNumber) {
+                if (account.getBalance() >= amount) {
+                    for (Account account2 : accountList) {
+                        if (account2.getAccountNumber() == accountNumberTransfer) {
+                            account2.setBalance(account2.getBalance() + amount);
+                            account.setBalance(account.getBalance() - amount);
+                            transfered = true;
+                        }
+                    }
+                    if (transfered == true) {
+                        return 1;
+                    } else return -2;
+                } else return -1;
+            }
+        }
+        return -3;
+        // returns 1 for successfull transaction
+        // returns -1 for insufficient balance
+        // returns -2 for account where to transfer was not found
+        // returns -3 for any unexpected error
+    }
+
     public List<Account> getAccountList() {
         return accountList;
     }

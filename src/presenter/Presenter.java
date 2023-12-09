@@ -30,4 +30,8 @@ public class Presenter {
     public long logIn(String name, String password) {
         return accountManager.signIn(name, password);
     }
+
+    public double checkBalance(long accountNumber) {
+        return accountManager.checkBalance(accountNumber);
+    }
 }

@@ -1,8 +1,8 @@
-package view.commands;
+package view.account_commands;
 
 import view.ConsoleUI;
 
-public class CheckBalance implements Command {
+public class CheckBalance implements AccountCommand {
     private ConsoleUI console;
 
     public CheckBalance(ConsoleUI console) {
@@ -13,7 +13,7 @@ public class CheckBalance implements Command {
         return "Check Balance";
     }
 
-    public void execute(){
-        console.checkBalance();
+    public void execute(long accountNumber){
+        console.checkBalance(accountNumber);
     }
 }

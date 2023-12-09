@@ -107,19 +107,19 @@ public class ConsoleUI implements View {
         }
         System.out.println("Log in successful");
         accountMenuWork = true;
-        accountMenuStart();
+        accountMenuStart(presenter.logIn(name, password));
     }
 
-    public void accountMenuStart() {
+    public void accountMenuStart(long accountNumber) {
         while (accountMenuWork) {
             print(accountMenu.print());
             String choice = scanner.nextLine();
-            accountMenu.execute(choice);
+            accountMenu.execute(choice, accountNumber);
         }
     }
 
-    public void checkBalance() {
-        
+    public void checkBalance(long accountNumber) {
+        print(String.valueOf(presenter.checkBalance(accountNumber)));
     }
 
     public void logOut() {

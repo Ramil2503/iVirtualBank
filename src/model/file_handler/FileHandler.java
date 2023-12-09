@@ -7,7 +7,7 @@ import model.account.Account;
 
 public class FileHandler implements SaveToFile {
     private static String filePath = "accounts_data.csv";
-    private static final String CSV_HEADER = "AccountNumber,OwnerName,Balance";
+    private static final String CSV_HEADER = "AccountNumber,Password,OwnerName,Balance";
 
     public boolean saveToFile(List<Account> accountList) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
@@ -15,7 +15,10 @@ public class FileHandler implements SaveToFile {
             writer.newLine();
 
             for (Account account : accountList) {
-                writer.write(account.getAccountNumber() + "," + account.getOwnerName() + "," + account.getBalance());
+                writer.write(account.getAccountNumber() + "," +
+                             account.getPassword() + "," +
+                             account.getOwnerName() + "," +
+                             account.getBalance());
                 writer.newLine();
             }
 
@@ -43,12 +46,13 @@ public class FileHandler implements SaveToFile {
                 }
 
                 String[] data = line.split(",");
-                if (data.length == 3) {
+                if (data.length == 4) {
                     int accountNumber = Integer.parseInt(data[0]);
-                    String ownerName = data[1];
-                    double balance = Double.parseDouble(data[2]);
+                    String password = data[1];
+                    String ownerName = data[2];
+                    double balance = Double.parseDouble(data[3]);
 
-                    Account account = new Account(accountNumber, ownerName, balance);
+                    Account account = new Account(accountNumber, password, ownerName, balance);
                     accountList.add(account);
                 }
             }

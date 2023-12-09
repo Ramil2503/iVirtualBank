@@ -1,8 +1,8 @@
-package view.commands;
+package view.account_commands;
 
 import view.ConsoleUI;
 
-public class LogOut implements Command {
+public class LogOut implements AccountCommand {
         private ConsoleUI console;
 
     public LogOut(ConsoleUI console) {
@@ -13,7 +13,7 @@ public class LogOut implements Command {
         return "Log out";
     }
 
-    public void execute() {
+    public void execute(long accountNumber) {
         console.logOut();
     }
 }

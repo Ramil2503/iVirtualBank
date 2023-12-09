@@ -3,12 +3,12 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.commands.CheckBalance;
-import view.commands.Command;
-import view.commands.LogOut;
+import view.account_commands.CheckBalance;
+import view.account_commands.LogOut;
+import view.account_commands.AccountCommand;
 
 public class AccountMenu {
-    private List<Command> list;
+    private List<AccountCommand> list;
 
     public AccountMenu(ConsoleUI console) {
         list = new ArrayList<>();
@@ -27,7 +27,7 @@ public class AccountMenu {
         return stringBuilder.toString();
     }
 
-    public void execute(String choice){
-        list.get(Integer.parseInt(choice) - 1).execute();
+    public void execute(String choice, long accountNumber){
+        list.get(Integer.parseInt(choice) - 1).execute(accountNumber);
     }
 }

@@ -31,6 +31,10 @@ public class Presenter {
         return accountManager.signIn(name, password);
     }
 
+    public String viewInformation(long accountNumber) {
+        return accountManager.viewInformation(accountNumber);
+    }
+
     public double checkBalance(long accountNumber) {
         return accountManager.checkBalance(accountNumber);
     }

@@ -118,6 +118,10 @@ public class ConsoleUI implements View {
         }
     }
 
+    public void viewInformation(long accountNumber) {
+        print(presenter.viewInformation(accountNumber));
+    }
+
     public void checkBalance(long accountNumber) {
         print("Your balance: ");
         print(String.valueOf(presenter.checkBalance(accountNumber)));

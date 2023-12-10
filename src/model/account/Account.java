@@ -15,8 +15,8 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account [accountNumber=" + accountNumber + ", password=" + password + ", ownerName=" + ownerName
-                + ", balance=" + balance + "]";
+        return "Account number = " + accountNumber + "\nPassword = *******" + "\nOwner name = " + ownerName
+                + "\nBalance = " + balance;
     }
 
     public long getAccountNumber() {

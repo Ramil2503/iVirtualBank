@@ -49,6 +49,15 @@ public class AccountManager {
         return -1;
     }
 
+    public String viewInformation(long accountNumber) {
+        for (Account account : accountList) {
+            if (account.getAccountNumber() == accountNumber) {
+                return account.toString();
+            }
+        }
+        return null;
+    }
+
     public double checkBalance(long accountNumber) {
         for (Account account : accountList) {
             if (account.getAccountNumber() == accountNumber) {

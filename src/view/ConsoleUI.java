@@ -118,9 +118,48 @@ public class ConsoleUI implements View {
         }
     }
 
+    public void viewInformation(long accountNumber) {
+        print(presenter.viewInformation(accountNumber));
+    }
+
     public void checkBalance(long accountNumber) {
+        print("Your balance: ");
         print(String.valueOf(presenter.checkBalance(accountNumber)));
     }
+
+    public void transferFunds(long accountNumber) {
+        double amountToTransfer;
+        long accountNumberTransfer;
+        
+        print("Enter the amount you want to transfer: ");
+        amountToTransfer = scanner.nextDouble();
+        print("Enter the account number where to transfer: ");
+        accountNumberTransfer = scanner.nextLong();
+        scanner.nextLine(); // Consume newline character after reading the long
+    
+        int transferResult = presenter.transferFunds(accountNumber, amountToTransfer, accountNumberTransfer);
+    
+        while (transferResult != 1) {
+            if (transferResult == -1) {
+                print("Insufficient amount of money");
+            } else if (transferResult == -2) {
+                print("The account with the entered account number does not exist");
+            }
+            
+            print("Enter the amount you want to transfer: ");
+            amountToTransfer = scanner.nextDouble();
+            print("Enter the account number where to transfer: ");
+            accountNumberTransfer = scanner.nextLong();
+            scanner.nextLine(); // Consume newline character after reading the long
+            
+            transferResult = presenter.transferFunds(accountNumber, amountToTransfer, accountNumberTransfer);
+        }
+    
+        print("Successful transaction!");
+        checkBalance(accountNumber);
+        print("");
+    }
+    
 
     public void logOut() {
         accountMenuWork = false;

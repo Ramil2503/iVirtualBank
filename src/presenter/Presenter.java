@@ -31,7 +31,19 @@ public class Presenter {
         return accountManager.signIn(name, password);
     }
 
+    public String viewInformation(long accountNumber) {
+        return accountManager.viewInformation(accountNumber);
+    }
+
     public double checkBalance(long accountNumber) {
         return accountManager.checkBalance(accountNumber);
+    }
+
+    public int transferFunds(long accountNumber, double amount, long accountNumberTransfer) {
+        int transferResult = accountManager.tranferFunds(accountNumber, amount, accountNumberTransfer);
+        if (transferResult == 1) {
+            fileHandler.saveToFile(accountManager.getAccountList()); // Save updated balances
+        }
+        return transferResult;
     }
 }

@@ -5,6 +5,8 @@ import java.util.List;
 
 import view.account_commands.CheckBalance;
 import view.account_commands.LogOut;
+import view.account_commands.TransferFunds;
+import view.account_commands.ViewInformation;
 import view.account_commands.AccountCommand;
 
 public class AccountMenu {
@@ -12,7 +14,9 @@ public class AccountMenu {
 
     public AccountMenu(ConsoleUI console) {
         list = new ArrayList<>();
+        list.add(new ViewInformation(console));
         list.add(new CheckBalance(console));
+        list.add(new TransferFunds(console));
         list.add(new LogOut(console));
     }
 

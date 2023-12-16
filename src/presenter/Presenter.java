@@ -26,6 +26,9 @@ public class Presenter {
         accountManager.createAccount(name, password, userGender, birthDate);
         fileHandler.saveToFile(accountManager.getAccountList());
     }
+    public boolean nameChecker(String name) {
+        return accountManager.nameChecker(name);
+    }
 
     public long logIn(String name, String password) {
         return accountManager.signIn(name, password);

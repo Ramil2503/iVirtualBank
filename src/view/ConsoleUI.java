@@ -46,24 +46,28 @@ public class ConsoleUI implements View {
 
         print("Enter the name: ");
         name = scanner.nextLine();
+        while (!presenter.nameChecker(name)) {
+            print("The account with this username already exists.\nPlease choose another username: ");
+            name = scanner.nextLine();
+        }
 
         print("Enter the password: ");
         password = scanner.nextLine();
-        
+
         while (true) {
             print("Please select the gender:");
             Gender[] genders = Gender.values();
             for (int i = 0; i < genders.length; i++) {
                 print((i + 1) + ". " + genders[i]);
             }
-        
+
             System.out.print("Enter the number corresponding to your choice: ");
             int choice;
-        
+
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
                 scanner.nextLine();
-        
+
                 if (choice >= 1 && choice <= genders.length) {
                     userGender = genders[choice - 1];
                     break;
@@ -74,7 +78,7 @@ public class ConsoleUI implements View {
                 print("Invalid input. Please enter a valid number.");
                 scanner.nextLine();
             }
-        }        
+        }
 
         while (birthDate == null) {
             print("Please enter the birth date (YYYY-MM-DD): ");
@@ -90,7 +94,6 @@ public class ConsoleUI implements View {
         print("");
         scanner.nextLine();
     }
-    
     public void signIn() {
         String name;
         String password;

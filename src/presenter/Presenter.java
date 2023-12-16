@@ -22,8 +22,8 @@ public class Presenter {
         accountManager = new AccountManager(fileHandler.loadFromFile());
     }
 
-    public void createAccount(String name, String password, Gender userGender, LocalDate birthDate) {
-        accountManager.createAccount(name, password, userGender, birthDate);
+    public void createAccount(String userName, String ownerName, String password, Gender userGender, LocalDate birthDate) {
+        accountManager.createAccount(userName, ownerName, password, userGender, birthDate);
         fileHandler.saveToFile(accountManager.getAccountList());
     }
     public boolean nameChecker(String name) {

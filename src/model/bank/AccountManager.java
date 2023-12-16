@@ -23,15 +23,15 @@ public class AccountManager {
     //     accountList.add(test1);
     // }
 
-    public void createAccount(String name, String password, Gender userGender, LocalDate birthDate) {
+    public void createAccount(String userName, String ownerName, String password, Gender userGender, LocalDate birthDate) {
         long newAccountNumber = generateUniqueId();
-        Account newAccount = new Account(newAccountNumber, password, name, 10000.0);
+        Account newAccount = new Account(newAccountNumber, password, userName, ownerName, 10000.0);
         accountList.add(newAccount);
     }
 
     public boolean nameChecker(String name) {
         for (Account account : accountList) {
-            if (account.getOwnerName().equals(name)) {
+            if (account.getUserName().equals(name)) {
                 return false;
             }
         }
@@ -50,7 +50,7 @@ public class AccountManager {
     public long signIn(String name, String password) {
         long signedAccountNumber;
         for (Account account : accountList) {
-            if (account.getOwnerName().equals(name) && account.getPassword().equals(password)) {
+            if (account.getUserName().equals(name) && account.getPassword().equals(password)) {
                 signedAccountNumber = account.getAccountNumber();
                 return signedAccountNumber;
             }

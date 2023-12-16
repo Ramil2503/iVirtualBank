@@ -38,21 +38,25 @@ public class ConsoleUI implements View {
     }
 
     public void createAccount() {
-        String name;
+        String userName;
+        String ownerName;
         String password;
         Gender userGender;
         LocalDate birthDate = null;
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        print("Enter the name: ");
-        name = scanner.nextLine();
-        while (!presenter.nameChecker(name)) {
+        print("Username: ");
+        userName = scanner.nextLine();
+        while (!presenter.nameChecker(userName)) {
             print("The account with this username already exists.\nPlease choose another username: ");
-            name = scanner.nextLine();
+            userName = scanner.nextLine();
         }
 
-        print("Enter the password: ");
+        print("Password: ");
         password = scanner.nextLine();
+
+        print("Your name: ");
+        ownerName = scanner.nextLine();
 
         while (true) {
             print("Please select the gender:");
@@ -90,7 +94,7 @@ public class ConsoleUI implements View {
                 print("Invalid date format. Please use YYYY-MM-DD format.");
             }
         }
-        presenter.createAccount(name, password, userGender, birthDate);
+        presenter.createAccount(userName, ownerName, password, userGender, birthDate);
         print("");
         scanner.nextLine();
     }

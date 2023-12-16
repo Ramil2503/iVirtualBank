@@ -1,4 +1,3 @@
-AccountNumber,Password,OwnerName,Balance
-9105,123,roma,10070.0
-9106,123,aylin,10000.0
-9107,123,murad,9930.0
+AccountNumber,UserName,Password,OwnerName,Balance
+9101,roma,123,Ramil,10000.0
+9102,romaaa,123,Ramil,10000.0

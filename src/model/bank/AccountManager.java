@@ -29,6 +29,15 @@ public class AccountManager {
         accountList.add(newAccount);
     }
 
+    public boolean nameChecker(String name) {
+        for (Account account : accountList) {
+            if (account.getOwnerName().equals(name)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private long generateUniqueId() {
         long lastAccountNumber = 0;
         if (!accountList.isEmpty()) {

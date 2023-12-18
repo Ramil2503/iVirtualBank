@@ -101,7 +101,7 @@ public class ConsoleUI implements View {
     public void signIn() {
         String name;
         String password;
-        print("Enter your name: ");
+        print("Enter your username: ");
         name = scanner.nextLine();
         print("Enter the password: ");
         password = scanner.nextLine();

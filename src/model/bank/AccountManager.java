@@ -17,11 +17,6 @@ public class AccountManager {
     public AccountManager() {
         this(new ArrayList<>());
     }
-    
-    // public void test1() {
-    //     Account test1 = new Account(0, "aaa", 0);
-    //     accountList.add(test1);
-    // }
 
     public void createAccount(String userName, String ownerName, String password, Gender userGender, LocalDate birthDate) {
         long newAccountNumber = generateUniqueId();

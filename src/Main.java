@@ -1,5 +1,3 @@
-
-
 import view.ConsoleUI;
 import view.View;
 
